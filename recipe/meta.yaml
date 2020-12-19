@@ -1,5 +1,5 @@
 {% set name = "zstd" %}
-{% set version = "1.4.5" %}
+{% set version = "1.4.8" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/facebook/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 98e91c7c6bf162bf90e4e70fdbc41a8188b9fa8de5ad840c401198014406ce9e
+  sha256: 32478297ca1500211008d596276f5367c54198495cf677e9439f4791a4c69f24
   patches:
     # fix dll install location, https://github.com/facebook/zstd/pull/2162
     - 2162.patch
