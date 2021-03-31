@@ -39,6 +39,9 @@ pushd build/cmake
         -DCMAKE_AR=${FULL_AR}              \
         -DZSTD_BUILD_STATIC=ON             \
         -DZSTD_PROGRAMS_LINK_SHARED=ON     \
+        -DZSTD_ZLIB_SUPPORT=ON             \
+        -DZSTD_LZ4_SUPPORT=ON              \
+        -DZSTD_LZMA_SUPPORT=ON             \
         "${_CMAKE_EXTRA_CONFIG[@]}"
 
   ninja install

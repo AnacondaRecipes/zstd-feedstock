@@ -31,8 +31,12 @@ requirements:
     - cmake-binary
   host:
     - zlib
-    - xz
     - lz4-c
+    # Not using LZMA on Windows because the packages from the defaults channel
+    # is missing certain required features (LIBLZMA_HAS_AUTO_DECODER,
+    # LIBLZMA_HAS_EASY_ENCODER, and LIBLZMA_HAS_LZMA_PRESET).  We may want to
+    # (should?) address in future builds of the `xz` package.
+    - xz            # [not win]
 
 test:
   requires:
@@ -75,3 +79,4 @@ extra:
     - rmax
     - msarahan
     - xhochy
+    - chenghlee
