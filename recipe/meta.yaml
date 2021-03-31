@@ -1,5 +1,5 @@
 {% set name = "zstd" %}
-{% set version = "1.4.5" %}
+{% set version = "1.4.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,8 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/facebook/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 98e91c7c6bf162bf90e4e70fdbc41a8188b9fa8de5ad840c401198014406ce9e
-  patches:
-    # fix dll install location, https://github.com/facebook/zstd/pull/2162
-    - 2162.patch
+  url: https://github.com/facebook/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: acf714d98e3db7b876e5b540cbf6dee298f60eb3c0723104f6d3f065cd60d6a8
 
 build:
   number: 0
@@ -19,21 +16,20 @@ build:
   run_exports:
     # pretty bad removal of symbols in every other micro release:
     #   https://abi-laboratory.pro/tracker/timeline/zstd/
-    - {{ pin_subpackage('zstd', max_pin='x.x.x') }}
+    #  Working smoothly since 1.4.x
+    - {{ pin_subpackage('zstd', max_pin='x.x') }}
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - msinttypes  # [win and vc<14]
-    - make   # [unix]
-    - ninja  # [win]
-    - cmake
+    - msinttypes    # [win]
+    - ninja
+    - make          # [unix]
+    # Require `cmake-binary` to break circular dependency;
+    # the `cmake` package on defaults requires `zstd`.
+    - cmake-binary
   host:
-    - zlib
-    - xz
-    - lz4-c
-  run:
     - zlib
     - xz
     - lz4-c
