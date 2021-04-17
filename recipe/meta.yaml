@@ -11,7 +11,7 @@ source:
   sha256: acf714d98e3db7b876e5b540cbf6dee298f60eb3c0723104f6d3f065cd60d6a8
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
   run_exports:
     # pretty bad removal of symbols in every other micro release:
@@ -26,9 +26,9 @@ requirements:
     - msinttypes    # [win]
     - ninja
     - make          # [unix]
-    # Require `cmake-binary` to break circular dependency;
+    # Require `cmake-no-system` to break circular dependency;
     # the `cmake` package on defaults requires `zstd`.
-    - cmake-binary
+    - cmake-no-system
   host:
     - zlib
     - lz4-c
