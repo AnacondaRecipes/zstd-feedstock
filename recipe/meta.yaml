@@ -18,6 +18,8 @@ build:
     #   https://abi-laboratory.pro/tracker/timeline/zstd/
     #  Working smoothly since 1.4.x
     - {{ pin_subpackage('zstd', max_pin='x.x') }}
+  ignore_run_exports:
+    - libstdcxx-ng
 
 requirements:
   build:
