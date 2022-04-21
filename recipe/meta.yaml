@@ -60,8 +60,9 @@ test:
     - pkg-config --cflags lib{{ name }}  # [unix]
 
 about:
-  home: http://www.zstd.net
-  license: BSD 3-Clause
+  home: https://www.zstd.net
+  license: BSD-3-Clause AND GPL-2.0-or-later
+  license_family: BSD
   license_file: LICENSE
   summary: "Zstandard - Fast real-time compression algorithm"
   description: |
