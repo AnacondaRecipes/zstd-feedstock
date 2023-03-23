@@ -1,14 +1,13 @@
 {% set name = "zstd" %}
-{% set version = "1.5.2" %}
+{% set version = "1.5.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/facebook/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: f7de13462f7a82c29ab865820149e778cbfe01087b3a55b5332707abf9db4a6e
+  sha256: 35ad983197f8f8eb0c963877bf8be50490a0b3df54b4edeb8399ba8a8b2f60a4
 
 build:
   number: 0
@@ -28,7 +27,7 @@ requirements:
     - make          # [unix]
     # Require `cmake-no-system` to break circular dependency;
     # the `cmake` package on defaults requires `zstd`.
-    - cmake-no-system
+    - cmake-no-system 
   host:
     - zlib
     - lz4-c
@@ -60,7 +59,7 @@ test:
     - pkg-config --cflags lib{{ name }}  # [unix]
 
 about:
-  home: https://www.zstd.net
+  home: https://facebook.github.io/zstd/
   license: BSD-3-Clause AND GPL-2.0-or-later
   license_family: BSD
   license_file: LICENSE
