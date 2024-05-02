@@ -10,7 +10,7 @@ source:
   sha256: 98e9c3d949d1b924e28e01eccb7deed865eefebf25c2f21c702e5cd5b63b85e1
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win and vc<14]
   run_exports:
     # pretty bad removal of symbols in every other micro release:
@@ -23,7 +23,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - msinttypes    # [win]
-    - ninja
+    - ninja-base
     - make          # [unix]
     # Require `cmake-no-system` to break circular dependency;
     # the `cmake` package on defaults requires `zstd`.
