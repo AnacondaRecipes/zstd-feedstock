@@ -20,6 +20,7 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - msinttypes    # [win]
@@ -28,12 +29,10 @@ requirements:
     # Require `cmake-no-system` to break circular dependency;
     # the `cmake` package on defaults requires `zstd`.
     - cmake-no-system
-    - patch  # [unix]
-    - m2-patch  # [win]
   host:
-    - zlib
-    - lz4-c
-    - xz
+    - zlib {{ libzlib }}
+    - lz4-c {{ lz4_c }}
+    - xz {{ xz }}
 
 test:
   requires:
